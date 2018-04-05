@@ -4,16 +4,28 @@
 \alias{myscLCA}
 \title{LCA scRNA analysis}
 \usage{
-myscLCA(datmatrix, clust.max = 10)
+myscLCA(datmatrix, clust.max = 10, trainingSetSize = 1000,
+  datBatch = NULL)
 }
 \arguments{
 \item{datmatrix}{data matrix, gene by cell}
 
-\item{clust.max}{maximum number of clusters specified by user}
+\item{clust.max}{maximum number of clusters specified by user, default: 10}
+
+\item{trainingSetSize}{the number of cells used in training set; default: 1000; maximum: the total number of cells in data matrix}
+
+\item{datBatch}{a vector of batch group ID for each cell, default: NULL}
 }
 \value{
 an integer vector showing clustering membership
 }
 \description{
 This function loads a gene by cell transcript count matarix (row by column).
+}
+\examples{
+data(myscExampleData)
+dim(myscExampleData$datamatrix)
+table(myscExampleData$truelabel)
+myclust.res <- myscLCA(myscExampleData$datamatrix,trainingSetSize = 200, datBatch = sample(1:2,250,replace = T))
+table(myclust.res,myscExampleData$truelabel)
 }

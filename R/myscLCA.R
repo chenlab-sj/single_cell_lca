@@ -3,28 +3,48 @@
 #' This function loads a gene by cell transcript count matarix (row by column).
 #'
 #' @param datmatrix data matrix, gene by cell
-#' @param clust.max maximum number of clusters specified by user
+#' @param clust.max maximum number of clusters specified by user, default: 10
+#' @param trainingSetSize the number of cells used in training set; default: 1000; maximum: the total number of cells in data matrix
+#' @param datBatch a vector of batch group ID for each cell, default: NULL
 #' @return an integer vector showing clustering membership
+#' @examples
+#' data(myscExampleData)
+#' dim(myscExampleData$datamatrix)
+#' table(myscExampleData$truelabel)
+#' myclust.res <- myscLCA(myscExampleData$datamatrix,trainingSetSize = 200, datBatch = sample(1:2,250,replace = T))
+#' table(myclust.res,myscExampleData$truelabel)
 #' @export 
 
-#load("/home/ccheng1/mydocuments/scRNA/myfunctionlibs/myFunctions.RData")
+myscLCA <- function(datmatrix, clust.max=10, trainingSetSize=1000, datBatch=NULL){
+  spec <- T
+  if( ncol(datmatrix) > trainingSetSize){
+    mytrainset <- sample(ncol(datmatrix),trainingSetSize)
+    TPM <- datmatrix[,mytrainset]
+    myBatch <- datBatch[mytrainset]
+  }else{
+    TPM <- datmatrix
+    myBatch <- datBatch
+  }
+  TPMselect <- which(rowSums(TPM) > 0)
+  TPM <- TPM[TPMselect,]
+  UMI <- colSums(TPM)
+  TPM.log <- log2(TPM / matrix(UMI, ncol=ncol(TPM), nrow=nrow(TPM), byrow=T) + 2.5e-5)
+  pca <- prcomp(TPM.log, scale=T)
+  pcaT <- prcomp(t(TPM.log), scale=T)
+  nTWT <- which(TWtest(pcaT$sdev)$pvalue <= 0.05)
+  nTWT <- nTWT[which(abs(1-cosDist.part(rbind(log2(UMI) - mean(log2(UMI)), t(pcaT$x[,nTWT])), idx1 = 1, idx2 = -1)) < 0.5)]
+  if(!is.null(datBatch)){
+    nTWT <- nTWT[ which( p.adjust(apply(pcaT$x[,nTWT],2,function(x){kruskal.test(x,myBatch)$p.value}),"fdr") > 0.05) ]
+  }
+  nTW <- which(TWtest(pca$sdev)$pvalue <= 0.05)
+  nTW <- nTW[which(abs(1-cosDist.part(rbind(log2(UMI), t(pca$rotation[,nTW])), idx1 = 1, idx2 = -1)) < 0.5)]
+  if(!is.null(datBatch)){
+    nTW <- nTW[ which( p.adjust(apply(pca$rotation[,nTW],2,function(x){kruskal.test(x,myBatch)$p.value}),"fdr") > 0.05) ]
+  }
 
-#clust.max = 10
-myscLCA <- function(datmatrix, clust.max=10){
-  spec = T
-  TPM = datmatrix
-  TPM = TPM[which(rowSums(TPM) > 0),]
-  UMI = colSums(TPM)
-  TPM.log = log2(TPM / matrix(UMI, ncol=ncol(TPM), nrow=nrow(TPM), byrow=T) + 2.5e-5)
-  pca = prcomp(TPM.log, scale=T)
-  pcaT = prcomp(t(TPM.log), scale=T)
-  nTWT = which(TWtest(pcaT$sdev)$pvalue <= 0.05)
-  nTWT = nTWT[which(abs(1-cosDist.part(rbind(log2(UMI) - mean(log2(UMI)), t(pcaT$x[,nTWT])), idx1 = 1, idx2 = -1)) < 0.5)]
-  nTW = which(TWtest(pca$sdev)$pvalue <= 0.05)
-  nTW = nTW[which(abs(1-cosDist.part(rbind(log2(UMI), t(pca$rotation[,nTW])), idx1 = 1, idx2 = -1)) < 0.5)]
-  pcaT.dis = cosDist(pcaT$x[,nTWT])
-  factors.best = nTW
-  cutoff = quantile(apply(pca$rotation[,factors.best], 1, sumsq), 0.975)
+  pcaT.dis <- cosDist(pcaT$x[,nTWT])
+  factors.best <- nTW
+  cutoff <- quantile(apply(pca$rotation[,factors.best], 1, sumsq), 0.975)
   outliers = which(apply(pca$rotation[,factors.best], 1, sumsq) > cutoff)
   rot2 = pca$rotation[-outliers,factors.best]
   myDist.best = cosDist(pca$rotation[,factors.best]) 
@@ -161,6 +181,32 @@ myscLCA <- function(datmatrix, clust.max=10){
     }
     
   }
-  mymembership <- clust.best
+
+  if( ncol(datmatrix) > trainingSetSize){
+    mymembership <- clust.best
+    
+    myNumClust <- length(unique(clust.best))
+    if(length(factors.best) > 1){
+      center.best <- t(sapply(1:myNumClust,function(x){colMeans(pca$rotation[which(mymembership==x),factors.best])}))
+    }else{
+      center.best <- matrix( tapply(pca$rotation[,factors.best],mymembership,mean), ncol=1)
+    }
+    mysvd.d <- length(TPMselect-1)*pca$sdev[factors.best]^2
+    mytrans.mat <- (1/mysvd.d)*t(pca$x[,factors.best])
+    TPM <- datmatrix[TPMselect,]
+    UMI <- colSums(TPM)
+    TPM.log <- log2(TPM / matrix(UMI, ncol=ncol(TPM), nrow=nrow(TPM), byrow=T) + 2.5e-5)
+    TPM.scale <- scale(TPM.log)
+    myQsize <- ncol(TPM.scale)
+    myDsize <- nrow(center.best)
+    myQueries <- mytrans.mat %*% TPM.scale
+    myassignment <- cosDist.part(rbind(t(myQueries),center.best),idx1=myQsize+1:myDsize,idx2=1:myQsize)
+    myQmembership <- apply(myassignment[,1:myQsize],2,which.min)
+    
+    mymembership <- myQmembership
+  }else{
+    mymembership <- clust.best
+  }
+  
   return(mymembership);
 }
