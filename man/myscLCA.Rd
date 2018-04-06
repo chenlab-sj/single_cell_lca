@@ -4,7 +4,7 @@
 \alias{myscLCA}
 \title{LCA scRNA analysis}
 \usage{
-myscLCA(datmatrix, clust.max = 10, trainingSetSize = 1000,
+myscLCA(datmatrix, clust.max = 10, trainingSetSize = 1000, topN = 1,
   datBatch = NULL)
 }
 \arguments{
@@ -13,6 +13,8 @@ myscLCA(datmatrix, clust.max = 10, trainingSetSize = 1000,
 \item{clust.max}{maximum number of clusters specified by user, default: 10}
 
 \item{trainingSetSize}{the number of cells used in training set; default: 1000; maximum: the total number of cells in data matrix}
+
+\item{topN}{the number of top ranked results to be considered}
 
 \item{datBatch}{a vector of batch group ID for each cell, default: NULL}
 }
@@ -36,7 +38,7 @@ dim(myscExampleData$datamatrix)
 table(myscExampleData$truelabel)
 
 # Start my scRNAseq LCA analysis
-myclust.res <- myscLCA(myscExampleData$datamatrix)
+myclust.res <- myscLCA(myscExampleData$datamatrix,topN=3)
 
 # Top results are provide in a list
 length(myclust.res)

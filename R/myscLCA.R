@@ -5,6 +5,7 @@
 #' @param datmatrix data matrix, gene by cell
 #' @param clust.max maximum number of clusters specified by user, default: 10
 #' @param trainingSetSize the number of cells used in training set; default: 1000; maximum: the total number of cells in data matrix
+#' @param topN the number of top ranked results to be considered
 #' @param datBatch a vector of batch group ID for each cell, default: NULL
 #' @return an integer vector showing clustering membership
 #' @examples
@@ -21,7 +22,7 @@
 #' table(myscExampleData$truelabel)
 #' 
 #' # Start my scRNAseq LCA analysis
-#' myclust.res <- myscLCA(myscExampleData$datamatrix)
+#' myclust.res <- myscLCA(myscExampleData$datamatrix,topN=3)
 #' 
 #' # Top results are provide in a list
 #' length(myclust.res)
@@ -37,7 +38,7 @@
 #' 
 #' @export 
 
-myscLCA <- function(datmatrix, clust.max=10, trainingSetSize=1000, datBatch=NULL){
+myscLCA <- function(datmatrix, clust.max=10, trainingSetSize=1000,topN = 1, datBatch=NULL){
   myRes <- list()
   myResSilScore <- c()
   spec <- T
@@ -131,12 +132,13 @@ myscLCA <- function(datmatrix, clust.max=10, trainingSetSize=1000, datBatch=NULL
       clust.best = clust1
     }
   }
+  
   if(sil.best <0){
     mymembership <- rep(1,ncol(datmatrix))
     myRes[[1]] <- mymembership
     myResSilScore[1] <-sil.best
   }else{
-    myTop3 <- max( maxN(sil.best2[-1],3), 0)
+    myTop3 <- max( maxN(sil.best2[-1],topN), 0)
     myTop3 <- which(sil.best2 >= myTop3)
     for( xi in 1:length(myTop3)){
       clust.best <- clusters[myTop3[xi],]
