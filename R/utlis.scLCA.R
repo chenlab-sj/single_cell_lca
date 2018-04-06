@@ -15,8 +15,8 @@ cosDist <- function(x) {
 cosDist.part <- function(x, idx1, idx2) {
   idx1 = (1:nrow(x))[idx1]
   idx2 = (1:nrow(x))[idx2]
-  u = x[idx1,]
-  v = x[idx2,]
+  u = x[idx1,,drop=F]
+  v = x[idx2,,drop=F]
   if(length(idx1) == 1){ u =matrix(u,nrow=1)}
   if(length(idx2) == 1){ v= matrix(v,nrow=1)}
   val = (1 - u %*% t(v) / sqrt((rowSums(u^2)) %*% (t((rowSums(v^2))))))

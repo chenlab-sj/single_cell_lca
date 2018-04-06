@@ -8,14 +8,38 @@
 #' @param datBatch a vector of batch group ID for each cell, default: NULL
 #' @return an integer vector showing clustering membership
 #' @examples
+#' # Load example dataset
 #' data(myscExampleData)
+#' 
+#' # Both data matrix and true labels of cells are provided
+#' names(myscExampleData)
+#' 
+#' # With 14,074 genes and 250 cells, 83% of entries are zero
 #' dim(myscExampleData$datamatrix)
+#' 
+#' # Three types of cells
 #' table(myscExampleData$truelabel)
-#' myclust.res <- myscLCA(myscExampleData$datamatrix,trainingSetSize = 200, datBatch = sample(1:2,250,replace = T))
-#' table(myclust.res,myscExampleData$truelabel)
+#' 
+#' # Start my scRNAseq LCA analysis
+#' myclust.res <- myscLCA(myscExampleData$datamatrix)
+#' 
+#' # Top results are provide in a list
+#' length(myclust.res)
+#' 
+#' # The result ranked as the best, compared with the true labels:
+#' table(myclust.res[[1]],myscExampleData$truelabel)
+#' 
+#' # The result ranked as the second best:
+#' table(myclust.res[[2]],myscExampleData$truelabel)
+#' 
+#' # The result ranked as the third best:
+#' table(myclust.res[[3]],myscExampleData$truelabel)
+#' 
 #' @export 
 
 myscLCA <- function(datmatrix, clust.max=10, trainingSetSize=1000, datBatch=NULL){
+  myRes <- list()
+  myResSilScore <- c()
   spec <- T
   if( ncol(datmatrix) > trainingSetSize){
     mytrainset <- sample(ncol(datmatrix),trainingSetSize)
@@ -107,106 +131,120 @@ myscLCA <- function(datmatrix, clust.max=10, trainingSetSize=1000, datBatch=NULL
       clust.best = clust1
     }
   }
-  pval = matrix(NA, nrow=length(unique(clust.best)), ncol=max(nTW))
-  for (j in 1:nrow(pval)) for (i in nTW) pval[j,i] = wilcox.test(pca$rotation[which(clust.best==j), i], pca$rotation[which(clust.best!=j), i])$p.value
-  factors.best = which(apply(pval, 2, min) < 0.05/(ncol(pval)-1)/nrow(pval))
-  nClust = nrow(pval)
-  if (length(factors.best) >= 2) {
-    cutoff = quantile(apply(pca$rotation[,factors.best], 1, sumsq), 0.975)
-    outliers = which(apply(pca$rotation[,factors.best], 1, sumsq) > cutoff)
-    rot2 = pca$rotation[-outliers,factors.best]
-    myDist.best = cosDist(pca$rotation[,factors.best]) 
-    if (spec) {
-      A = 1 - myDist.best / 2
-      D = diag(apply(A, 1, sum))
-      L <- (D %^% (-1/2)) %*% A %*% (D %^% (-1/2))
-      evL <- eigen(L, symmetric=TRUE)
-      nF = length(factors.best)
-      if (nF > 50) nF = 50
-      X = evL$vectors[-outliers,1:nF]
-      X = X/sqrt(apply(X, 1, sumsq))
-      myHClust2 = hclust(dist(X), method="average")
-    }
-    myHClust = hclust(as.dist(myDist.best[-outliers, -outliers]), method="average")
-    clust1 = cutree(myHClust, nClust) # inital seed
-    for (z in 1:1000) {
-      my.center = matrix(0, nrow=nClust, ncol=length(factors.best))
-      for (i in 1:nClust)
-        if (sum(clust1 == i) > 1) {
-          my.center[i,] = colMeans(rot2[which(clust1==i),])
-        } else if (sum(clust1 == i) == 1) {
-          my.center[i,] = rot2[which(clust1==i),]
-        }
-      dist2 = cosDist.part(rbind(rot2, my.center), idx1 = length(clust1) + 1:nClust, idx2 = 1:length(clust1))
-      clust2 = apply(dist2, 2, which.min)
-      if (sum(clust1 != clust2) == 0) break
-      clust1 = clust2
-    }
-    if (spec) {
-      clust1 = cutree(myHClust2, nClust)# inital seed
-      mycenter = matrix(NA, nrow=nClust, ncol=ncol(X))
-      for (i in 1:nClust) {
-        if (sum(clust1 == i) > 1) {
-          mycenter[i,] = colMeans(X[which(clust1==i),])
-        } else {
-          mycenter[i,] = X[which(clust1==i),]
-        }
-      }
-      clust3 = kmeans(X, mycenter)$cluster
-      if (mean(silhouette(clust3, myDist.best[-outliers,-outliers])[,3]) > mean(silhouette(clust2, myDist.best[-outliers,-outliers])[,3])) clust2 = clust3
-    }
-    clust.best = array(NA, ncol(pca$rotation))
-    clust.best[-outliers] = clust2
-    clust2 = clust.best
-    for (i in outliers) {
-      tmp = array(NA, nClust)
-      for (j in 1:nClust) tmp[j] = mean(myDist.best[i, which(clust2 == j)])
-      clust.best[i] = which.min(tmp)
-    }
-  } else if (length(factors.best) == 1) {
-    myDist.best = as.matrix(dist(pca$rotation[,factors.best]))
-    myHClust = hclust(dist(pca$rotation[-outliers,factors.best]), method="average")
-    X = pca$rotation[-outliers,factors.best]
-    clust1 = cutree(myHClust, nClust)# inital seed
-    mycenter = array(NA, nClust)
-    for (i in 1:nClust) mycenter[i] = mean(X[which(clust1 == i)])
-    clust1 = kmeans(X, mycenter)$cluster
-    clust.best = array(NA, ncol(pca$rotation))
-    clust.best[-outliers] = clust1
-    clust2 = clust.best
-    for (i in outliers) {
-      tmp = array(NA, nClust)
-      for (j in 1:nClust) tmp[j] = mean(myDist.best[i, which(clust2 == j)])
-      clust.best[i] = which.min(tmp)
-    }
-    
-  }
-
-  if( ncol(datmatrix) > trainingSetSize){
-    mymembership <- clust.best
-    
-    myNumClust <- length(unique(clust.best))
-    if(length(factors.best) > 1){
-      center.best <- t(sapply(1:myNumClust,function(x){colMeans(pca$rotation[which(mymembership==x),factors.best])}))
-    }else{
-      center.best <- matrix( tapply(pca$rotation[,factors.best],mymembership,mean), ncol=1)
-    }
-    mysvd.d <- length(TPMselect-1)*pca$sdev[factors.best]^2
-    mytrans.mat <- (1/mysvd.d)*t(pca$x[,factors.best])
-    TPM <- datmatrix[TPMselect,]
-    UMI <- colSums(TPM)
-    TPM.log <- log2(TPM / matrix(UMI, ncol=ncol(TPM), nrow=nrow(TPM), byrow=T) + 2.5e-5)
-    TPM.scale <- scale(TPM.log)
-    myQsize <- ncol(TPM.scale)
-    myDsize <- nrow(center.best)
-    myQueries <- mytrans.mat %*% TPM.scale
-    myassignment <- cosDist.part(rbind(t(myQueries),center.best),idx1=myQsize+1:myDsize,idx2=1:myQsize)
-    myQmembership <- apply(myassignment[,1:myQsize],2,which.min)
-    
-    mymembership <- myQmembership
+  if(sil.best <0){
+    mymembership <- rep(1,ncol(datmatrix))
+    myRes[[1]] <- mymembership
+    myResSilScore[1] <-sil.best
   }else{
-    mymembership <- clust.best
+    myTop3 <- max( maxN(sil.best2[-1],3), 0)
+    myTop3 <- which(sil.best2 >= myTop3)
+    for( xi in 1:length(myTop3)){
+      clust.best <- clusters[myTop3[xi],]
+      pval = matrix(NA, nrow=myTop3[xi], ncol=max(nTW))
+      
+      for (j in 1:nrow(pval)) for (i in nTW) pval[j,i] = wilcox.test(pca$rotation[which(clust.best==j), i], pca$rotation[which(clust.best!=j), i])$p.value
+      factors.best = which(apply(pval, 2, min) < 0.05/(ncol(pval)-1)/nrow(pval))
+      nClust = nrow(pval)
+      if (length(factors.best) >= 2) {
+        cutoff = quantile(apply(pca$rotation[,factors.best], 1, sumsq), 0.975)
+        outliers = which(apply(pca$rotation[,factors.best], 1, sumsq) > cutoff)
+        rot2 = pca$rotation[-outliers,factors.best]
+        myDist.best = cosDist(pca$rotation[,factors.best]) 
+        if (spec) {
+          A = 1 - myDist.best / 2
+          D = diag(apply(A, 1, sum))
+          L <- (D %^% (-1/2)) %*% A %*% (D %^% (-1/2))
+          evL <- eigen(L, symmetric=TRUE)
+          nF = length(factors.best)
+          if (nF > 50) nF = 50
+          X = evL$vectors[-outliers,1:nF]
+          X = X/sqrt(apply(X, 1, sumsq))
+          myHClust2 = hclust(dist(X), method="average")
+        }
+        myHClust = hclust(as.dist(myDist.best[-outliers, -outliers]), method="average")
+        clust1 = cutree(myHClust, nClust) # inital seed
+        for (z in 1:1000) {
+          my.center = matrix(0, nrow=nClust, ncol=length(factors.best))
+          for (i in 1:nClust)
+            if (sum(clust1 == i) > 1) {
+              my.center[i,] = colMeans(rot2[which(clust1==i),])
+            } else if (sum(clust1 == i) == 1) {
+              my.center[i,] = rot2[which(clust1==i),]
+            }
+          dist2 = cosDist.part(rbind(rot2, my.center), idx1 = length(clust1) + 1:nClust, idx2 = 1:length(clust1))
+          clust2 = apply(dist2, 2, which.min)
+          if (sum(clust1 != clust2) == 0) break
+          clust1 = clust2
+        }
+        if (spec) {
+          clust1 = cutree(myHClust2, nClust)# inital seed
+          mycenter = matrix(NA, nrow=nClust, ncol=ncol(X))
+          for (i in 1:nClust) {
+            if (sum(clust1 == i) > 1) {
+              mycenter[i,] = colMeans(X[which(clust1==i),])
+            } else {
+              mycenter[i,] = X[which(clust1==i),]
+            }
+          }
+          clust3 = kmeans(X, mycenter)$cluster
+          if (mean(silhouette(clust3, myDist.best[-outliers,-outliers])[,3]) > mean(silhouette(clust2, myDist.best[-outliers,-outliers])[,3])) clust2 = clust3
+        }
+        clust.best = array(NA, ncol(pca$rotation))
+        clust.best[-outliers] = clust2
+        clust2 = clust.best
+        for (i in outliers) {
+          tmp = array(NA, nClust)
+          for (j in 1:nClust) tmp[j] = mean(myDist.best[i, which(clust2 == j)])
+          clust.best[i] = which.min(tmp)
+        }
+      } else if (length(factors.best) == 1) {
+        myDist.best = as.matrix(dist(pca$rotation[,factors.best]))
+        myHClust = hclust(dist(pca$rotation[-outliers,factors.best]), method="average")
+        X = pca$rotation[-outliers,factors.best]
+        clust1 = cutree(myHClust, nClust)# inital seed
+        mycenter = array(NA, nClust)
+        for (i in 1:nClust) mycenter[i] = mean(X[which(clust1 == i)])
+        clust1 = kmeans(X, mycenter)$cluster
+        clust.best = array(NA, ncol(pca$rotation))
+        clust.best[-outliers] = clust1
+        clust2 = clust.best
+        for (i in outliers) {
+          tmp = array(NA, nClust)
+          for (j in 1:nClust) tmp[j] = mean(myDist.best[i, which(clust2 == j)])
+          clust.best[i] = which.min(tmp)
+        }
+        
+      }
+      
+      if( ncol(datmatrix) > trainingSetSize){
+        mymembership <- clust.best
+        
+        myNumClust <- length(unique(clust.best))
+        if(length(factors.best) > 1){
+          center.best <- t(sapply(1:myNumClust,function(x){colMeans(pca$rotation[which(mymembership==x),factors.best])}))
+        }else{
+          center.best <- matrix( tapply(pca$rotation[,factors.best],mymembership,mean), ncol=1)
+        }
+        mysvd.d <- length(TPMselect-1)*pca$sdev[factors.best]^2
+        mytrans.mat <- (1/mysvd.d)*t(pca$x[,factors.best])
+        TPM <- datmatrix[TPMselect,]
+        UMI <- colSums(TPM)
+        TPM.log <- log2(TPM / matrix(UMI, ncol=ncol(TPM), nrow=nrow(TPM), byrow=T) + 2.5e-5)
+        TPM.scale <- scale(TPM.log)
+        myQsize <- ncol(TPM.scale)
+        myDsize <- nrow(center.best)
+        myQueries <- mytrans.mat %*% TPM.scale
+        myassignment <- cosDist.part(rbind(t(myQueries),center.best),idx1=myQsize+1:myDsize,idx2=1:myQsize)
+        myQmembership <- apply(myassignment[,1:myQsize],2,which.min)
+        
+        mymembership <- myQmembership
+      }else{
+        mymembership <- clust.best
+      }
+      myRes[[xi]] <- mymembership
+      myResSilScore[[xi]]=sil.best2[myTop3[xi]]
+    }#xi
   }
-  
-  return(mymembership);
+  myRes <- myRes[order(myResSilScore,decreasing = T)]
+  return(myRes);
 }

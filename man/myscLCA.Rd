@@ -23,9 +23,31 @@ an integer vector showing clustering membership
 This function loads a gene by cell transcript count matarix (row by column).
 }
 \examples{
+# Load example dataset
 data(myscExampleData)
+
+# Both data matrix and true labels of cells are provided
+names(myscExampleData)
+
+# With 14,074 genes and 250 cells, 83\% of entries are zero
 dim(myscExampleData$datamatrix)
+
+# Three types of cells
 table(myscExampleData$truelabel)
-myclust.res <- myscLCA(myscExampleData$datamatrix,trainingSetSize = 200, datBatch = sample(1:2,250,replace = T))
-table(myclust.res,myscExampleData$truelabel)
+
+# Start my scRNAseq LCA analysis
+myclust.res <- myscLCA(myscExampleData$datamatrix)
+
+# Top results are provide in a list
+length(myclust.res)
+
+# The result ranked as the best, compared with the true labels:
+table(myclust.res[[1]],myscExampleData$truelabel)
+
+# The result ranked as the second best:
+table(myclust.res[[2]],myscExampleData$truelabel)
+
+# The result ranked as the third best:
+table(myclust.res[[3]],myscExampleData$truelabel)
+
 }
