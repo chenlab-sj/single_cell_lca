@@ -4,8 +4,9 @@
 \alias{myscLCA}
 \title{LCA scRNA analysis}
 \usage{
-myscLCA(datmatrix, clust.max = 10, trainingSetSize = 1000, topN = 1,
-  datBatch = NULL)
+myscLCA(datmatrix, normalzeddat = NULL, cor.thresh = 0.5,
+  clust.max = 10, trainingSetSize = 1000, datBatch = NULL,
+  outlier.filter = F)
 }
 \arguments{
 \item{datmatrix}{data matrix, gene by cell}
@@ -13,8 +14,6 @@ myscLCA(datmatrix, clust.max = 10, trainingSetSize = 1000, topN = 1,
 \item{clust.max}{maximum number of clusters specified by user, default: 10}
 
 \item{trainingSetSize}{the number of cells used in training set; default: 1000; maximum: the total number of cells in data matrix}
-
-\item{topN}{the number of top ranked results to be considered}
 
 \item{datBatch}{a vector of batch group ID for each cell, default: NULL}
 }
@@ -38,7 +37,7 @@ dim(myscExampleData$datamatrix)
 table(myscExampleData$truelabel)
 
 # Start my scRNAseq LCA analysis
-myclust.res <- myscLCA(myscExampleData$datamatrix,topN=3)
+myclust.res <- myscLCA(myscExampleData$datamatrix)
 
 # Top results are provide in a list
 length(myclust.res)
@@ -46,10 +45,5 @@ length(myclust.res)
 # The result ranked as the best, compared with the true labels:
 table(myclust.res[[1]],myscExampleData$truelabel)
 
-# The result ranked as the second best:
-table(myclust.res[[2]],myscExampleData$truelabel)
-
-# The result ranked as the third best:
-table(myclust.res[[3]],myscExampleData$truelabel)
 
 }
