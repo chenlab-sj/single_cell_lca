@@ -6,7 +6,7 @@
 \usage{
 myscLCA(datmatrix, normalzeddat = NULL, cor.thresh = 0.5,
   clust.max = 10, trainingSetSize = 1000, datBatch = NULL,
-  outlier.filter = F)
+  outlier.filter = F, zerocorrection = 0.25)
 }
 \arguments{
 \item{datmatrix}{data matrix, gene by cell}
@@ -16,6 +16,8 @@ myscLCA(datmatrix, normalzeddat = NULL, cor.thresh = 0.5,
 \item{trainingSetSize}{the number of cells used in training set; default: 1000; maximum: the total number of cells in data matrix}
 
 \item{datBatch}{a vector of batch group ID for each cell, default: NULL}
+
+\item{zerocorrection}{correction for zeroes before log transformation, default: 0.25}
 }
 \value{
 an integer vector showing clustering membership
