@@ -11,6 +11,15 @@ Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characteriz
 What you need to install the package:
 
 - R
+- R: devtools
 
 ### Installing
+
+Start R, then:
+
+~~~~
+library(devtools)
+install_bitbucket("scLCA/single_cell_lca")
+~~~~
+
 
