@@ -43,7 +43,7 @@ In **R**:
 
 	data(myscExampleData)
 
-#It includes both the gene expression matrix and the true labels of the cells:
+#It includes both the transcritp counts matrix and the true labels of the cells:
 
 	names(myscExampleData)
 #---output in R---
