@@ -8,18 +8,79 @@ Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characteriz
 ## Getting Started
 
 ### Prerequisites
-What you need to install the package:
 
-- R
-- R: devtools
+We need **R** and several **R** packages:
+
+```
+	- R
+	- R: devtools
+	- R: igraph
+	- R: mclust
+	- R: RMTstat
+```
+
 
 ### Installing
 
-Start R, then:
+Start **R**, then:
 
-~~~~
-library(devtools)
-install_bitbucket("scLCA/single_cell_lca")
-~~~~
+>
+```R
+	library(devtools)
+	install_bitbucket("scLCA/single_cell_lca")
+```
+
+
+### Running the example data in scLCA
+
+In **R**:
+
+
+```R
+# Load the package:
+
+library(scLCA)
+
+#Load the example dataset provided in the package:
+
+data(myscExampleData)
+
+#It includes both the gene expression matrix and the true labels of the cells:
+
+names(myscExampleData)
+#---output in R---
+#[1] "datamatrix" "truelabel"
+
+#With 14,074 genes and 250 cells, 83% of entries are zero
+
+dim(myscExampleData$datamatrix)
+#---output in R---
+#[1] 14074	250
+
+# Three types of cells in the example dataset
+
+table(myscExampleData$truelabel)
+#---output in R---
+#	1	2	3
+#	94	37	119
+ 
+# Start scLCA analysis
+
+myclust.res <- myscLCA(myscExampleData$datamatrix)
+ 
+# The top result, compared with the true labels:
+
+table(myclust.res[[1]],myscExampleData$truelabel)
+#---output in R---
+#		1	2	3
+#	1	94	0	0
+#	2	0	1	119
+#	3	0	36	0
+
+
+```
+
+
+
 
 
