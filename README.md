@@ -23,8 +23,6 @@ We need **R** and several **R** packages:
 ### Installing
 
 Start **R**, then:
-
->
 ```R
 	library(devtools)
 	install_bitbucket("scLCA/single_cell_lca")
