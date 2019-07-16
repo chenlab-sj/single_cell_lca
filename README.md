@@ -95,7 +95,7 @@ __Nature__, __2019__
 
 ### [Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
 
-__Science Immunology__,__2018__
+__Science Immunology__, __2018__
 
 >The interaction between extrinsic factors and intrinsic signal strength governs thymocyte 
 >development, but the mechanisms linking them remain elusive. We report that mechanistic 
