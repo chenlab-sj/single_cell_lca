@@ -93,6 +93,17 @@ __Nature__, __2019__
 >Amongst helper T cells, TH 17 cells have prominent roles in autoimmunity and tissue 
 >inflammation and are characterized by inherent plasticity although how such …
 
+### [Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
+
+__Science Immunology__,__2018__
+
+>The interaction between extrinsic factors and intrinsic signal strength governs thymocyte 
+>development, but the mechanisms linking them remain elusive. We report that mechanistic 
+>target of rapamycin complex 1 (mTORC1) couples microenvironmental cues with metabolic 
+>programs to orchestrate the reciprocal development of two fundamentally distinct T cell 
+>lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
+>programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
+
 ## Corresponding author
 
 [Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
