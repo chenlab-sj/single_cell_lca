@@ -124,6 +124,14 @@ In **R**:
 
 ```
 
+### Parameters
+
+|Argument	|Description	|Default|
+|-----------|:-------------:|------:|
+|datmatrix  |gene by cell matrix| provided by user|
+|clust.max |maximum number of clusters to be tested|10|
+
+
 ### LCA gallery
 
 #### PBMC heterogeneity
