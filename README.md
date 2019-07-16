@@ -78,6 +78,18 @@ In **R**:
 
 ```
 
+## Research papers using LCA for single cell RNAseq analysis
+
+### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
+
+Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. Nguyen, Beisi Xu, Yogesh Dhungana, Sherri Rankin, Wenan Chen, Celeste Rosencrance, Kai Yang, Yiping Fan, Yong Cheng, John Easton, Geoffrey Neale, Peter Vogel & Hongbo Chi 
+
+Nature, 2019
+
+## Corresponding author
+
+[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
+
 
 
 
