@@ -152,16 +152,15 @@ In **R**:
 ![Rh41](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca3.png)
 >
 
----
 
 ## Corresponding author
 
-~~~~
+>
 [Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
-	
+>	
 St. Jude Children's Research Hospital
-~~~~
----
+>
+
 
 
 
