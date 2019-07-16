@@ -5,7 +5,7 @@ A Robust and Scalable Algorithm to Reveal Subtle Diversity in Large-Scale Single
 ## Description
 Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characterize cell-to-cell variation and dynamics in a seemingly homogenous population.  Efficient and affordable, scRNA-seq is gaining in popularity in both basic and translational biological research areas. However, significant challenges arise in the analysis of scRNA-seq data, including low signal-to-noise ratio with high data sparsity, rising scalability hurdles with hundreds of thousands of cells, and more. Due to inherent complexities in scRNA-seq data, the performance of currently available algorithms may not always be optimal even for fundamental tasks such as identifying heterogeneous subpopulations in the data. In this study, we developed Latent Cellular Analysis (LCA), a machine learning based analytical pipeline that combines similarity measurement by latent cellular states with a graph-based clustering algorithm. LCA features a dual-space model search for both the optimal number of subpopulations and the informative cellular states distinguishing them. LCA provides heuristic solutions for population number inference, dimension reduction, feature selection and confounding factor removal without explicit gene filtering. LCA has proved to be robust, accurate and powerful by comparison to multiple state-of-the-art computational methods on large-scale real and simulated scRNA-seq data. Importantly, LCA’s ability to learn from representative subsets of the data provides scalability, thereby addressing a significant challenge for growing sample size in scRNA-seq data analysis.
 
-## Papers using LCA for single-cell RNAseq analysis
+## Publications using LCA for single-cell RNAseq analysis
 
 ### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
 
@@ -33,6 +33,11 @@ __Science Immunology__, __2018__
 >programs to orchestrate the reciprocal development of two fundamentally distinct T cell 
 >lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
 >programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
+
+### LCA at AACR Annual Meeting 2018
+
+[LCA: A robust and scalable algorithm to reveal subtle diversity in large-scale single-cell RNA-Seq data](http://cancerres.aacrjournals.org/content/78/13_Supplement/5297)
+
 
 
 ## Getting Started
@@ -111,7 +116,7 @@ In **R**:
 
 ## Corresponding author
 
-	[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
+[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
 
 
 
