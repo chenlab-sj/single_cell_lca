@@ -9,6 +9,8 @@ Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characteriz
 
 ### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
 
+![Chi2019Nature](https://bitbucket.org/scLCA/single_cell_lca/downloads/chi1019nature.png)
+
 Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. Nguyen, Beisi Xu, Yogesh Dhungana, Sherri Rankin, Wenan Chen, Celeste Rosencrance, Kai Yang, Yiping Fan, Yong Cheng, John Easton, Geoffrey Neale, Peter Vogel & Hongbo Chi 
 
 __Nature__, __2019__
