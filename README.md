@@ -134,6 +134,10 @@ In **R**:
 
 ![Melanoma cellular ecosystem](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca2.png)
 
+#### CD44 characterizing the differentiation of Rh41 cells 
+
+![Rh41](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca3.png)
+
 
 ---
 
