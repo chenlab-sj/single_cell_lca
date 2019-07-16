@@ -5,6 +5,32 @@ A Robust and Scalable Algorithm to Reveal Subtle Diversity in Large-Scale Single
 ## Description
 Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characterize cell-to-cell variation and dynamics in a seemingly homogenous population.  Efficient and affordable, scRNA-seq is gaining in popularity in both basic and translational biological research areas. However, significant challenges arise in the analysis of scRNA-seq data, including low signal-to-noise ratio with high data sparsity, rising scalability hurdles with hundreds of thousands of cells, and more. Due to inherent complexities in scRNA-seq data, the performance of currently available algorithms may not always be optimal even for fundamental tasks such as identifying heterogeneous subpopulations in the data. In this study, we developed Latent Cellular Analysis (LCA), a machine learning based analytical pipeline that combines similarity measurement by latent cellular states with a graph-based clustering algorithm. LCA features a dual-space model search for both the optimal number of subpopulations and the informative cellular states distinguishing them. LCA provides heuristic solutions for population number inference, dimension reduction, feature selection and confounding factor removal without explicit gene filtering. LCA has proved to be robust, accurate and powerful by comparison to multiple state-of-the-art computational methods on large-scale real and simulated scRNA-seq data. Importantly, LCA’s ability to learn from representative subsets of the data provides scalability, thereby addressing a significant challenge for growing sample size in scRNA-seq data analysis.
 
+## Research papers using LCA for single cell RNAseq analysis
+
+### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
+
+Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. Nguyen, Beisi Xu, Yogesh Dhungana, Sherri Rankin, Wenan Chen, Celeste Rosencrance, Kai Yang, Yiping Fan, Yong Cheng, John Easton, Geoffrey Neale, Peter Vogel & Hongbo Chi 
+
+__Nature__, __2019__
+
+>A defining feature of adaptive immunity is the development of long-lived memory T cells to 
+>curtail infection. Recent studies have identified a unique stem-like T-cell subset amongst 
+>exhausted CD8-positive T cells in chronic infection but it remains unclear whether 
+>CD4-positive T-cell subsets with similar features exist in chronic inflammatory conditions. 
+>Amongst helper T cells, TH 17 cells have prominent roles in autoimmunity and tissue 
+>inflammation and are characterized by inherent plasticity although how such …
+
+### [Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
+
+__Science Immunology__, __2018__
+
+>The interaction between extrinsic factors and intrinsic signal strength governs thymocyte 
+>development, but the mechanisms linking them remain elusive. We report that mechanistic 
+>target of rapamycin complex 1 (mTORC1) couples microenvironmental cues with metabolic 
+>programs to orchestrate the reciprocal development of two fundamentally distinct T cell 
+>lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
+>programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
+
 ## Getting Started
 
 ### Prerequisites
@@ -78,31 +104,6 @@ In **R**:
 
 ```
 
-## Research papers using LCA for single cell RNAseq analysis
-
-### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
-
-Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. Nguyen, Beisi Xu, Yogesh Dhungana, Sherri Rankin, Wenan Chen, Celeste Rosencrance, Kai Yang, Yiping Fan, Yong Cheng, John Easton, Geoffrey Neale, Peter Vogel & Hongbo Chi 
-
-__Nature__, __2019__
-
->A defining feature of adaptive immunity is the development of long-lived memory T cells to 
->curtail infection. Recent studies have identified a unique stem-like T-cell subset amongst 
->exhausted CD8-positive T cells in chronic infection but it remains unclear whether 
->CD4-positive T-cell subsets with similar features exist in chronic inflammatory conditions. 
->Amongst helper T cells, TH 17 cells have prominent roles in autoimmunity and tissue 
->inflammation and are characterized by inherent plasticity although how such …
-
-### [Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
-
-__Science Immunology__, __2018__
-
->The interaction between extrinsic factors and intrinsic signal strength governs thymocyte 
->development, but the mechanisms linking them remain elusive. We report that mechanistic 
->target of rapamycin complex 1 (mTORC1) couples microenvironmental cues with metabolic 
->programs to orchestrate the reciprocal development of two fundamentally distinct T cell 
->lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
->programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
 
 ## Corresponding author
 
