@@ -124,6 +124,14 @@ In **R**:
 
 ```
 
+### LCA gallery
+
+#### PBMC heterogeneity
+
+![PBMC heterogeneity](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca1.png)
+
+
+
 ---
 
 ## Corresponding author
