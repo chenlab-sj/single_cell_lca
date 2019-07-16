@@ -34,11 +34,6 @@ __Science Immunology__, __2018__
 >lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
 >programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
 
-### LCA at AACR Annual Meeting 2018
-
-[LCA: A robust and scalable algorithm to reveal subtle diversity in large-scale single-cell RNA-Seq data](http://cancerres.aacrjournals.org/content/78/13_Supplement/5297)
-
-
 
 ## Getting Started
 
