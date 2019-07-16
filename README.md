@@ -26,7 +26,7 @@ Abstract:
 
 ### Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells
 
-[![Chi2018ScienceImmuno](https://bitbucket.org/scLCA/single_cell_lca/downloads/chi2019scienceimmun.png)](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
+[![Chi2018ScienceImmuno](https://bitbucket.org/scLCA/single_cell_lca/downloads/chi2018scienceimmun.png)](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
 
 Kai Yang, Daniel Bastardo Blanco, Xiang Chen, Pradyot Dash, Geoffrey Neale, Celeste Rosencrance, John Easton Wenan Chen, Changde Cheng, Yogesh Dhungana, Anil KC, Walid Awad, Xi-Zhi J. Guo, Paul G. Thomas, and Hongbo Chi
 
