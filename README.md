@@ -5,7 +5,7 @@ A Robust and Scalable Algorithm to Reveal Subtle Diversity in Large-Scale Single
 ## Description
 Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characterize cell-to-cell variation and dynamics in a seemingly homogenous population.  Efficient and affordable, scRNA-seq is gaining in popularity in both basic and translational biological research areas. However, significant challenges arise in the analysis of scRNA-seq data, including low signal-to-noise ratio with high data sparsity, rising scalability hurdles with hundreds of thousands of cells, and more. Due to inherent complexities in scRNA-seq data, the performance of currently available algorithms may not always be optimal even for fundamental tasks such as identifying heterogeneous subpopulations in the data. In this study, we developed Latent Cellular Analysis (LCA), a machine learning based analytical pipeline that combines similarity measurement by latent cellular states with a graph-based clustering algorithm. LCA features a dual-space model search for both the optimal number of subpopulations and the informative cellular states distinguishing them. LCA provides heuristic solutions for population number inference, dimension reduction, feature selection and confounding factor removal without explicit gene filtering. LCA has proved to be robust, accurate and powerful by comparison to multiple state-of-the-art computational methods on large-scale real and simulated scRNA-seq data. Importantly, LCA’s ability to learn from representative subsets of the data provides scalability, thereby addressing a significant challenge for growing sample size in scRNA-seq data analysis.
 
-## Research papers using LCA for single cell RNAseq analysis
+## Research papers using LCA for single-cell RNAseq analysis
 
 ### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
 
@@ -21,6 +21,8 @@ __Nature__, __2019__
 >inflammation and are characterized by inherent plasticity although how such …
 
 ### [Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
+
+Kai Yang, Daniel Bastardo Blanco, Xiang Chen, Pradyot Dash, Geoffrey Neale, Celeste Rosencrance, John Easton Wenan Chen, Changde Cheng, Yogesh Dhungana, Anil KC, Walid Awad, Xi-Zhi J. Guo, Paul G. Thomas, and Hongbo Chi
 
 __Science Immunology__, __2018__
 
