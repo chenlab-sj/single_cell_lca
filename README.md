@@ -130,6 +130,9 @@ In **R**:
 
 ![PBMC heterogeneity](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca1.png)
 
+#### Melanoma cellular ecosystem
+
+![Melanoma cellular ecosystem](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca2.png)
 
 
 ---
