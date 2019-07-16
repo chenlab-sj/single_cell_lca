@@ -13,7 +13,7 @@ Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characteriz
 
 Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. Nguyen, Beisi Xu, Yogesh Dhungana, Sherri Rankin, Wenan Chen, Celeste Rosencrance, Kai Yang, Yiping Fan, Yong Cheng, John Easton, Geoffrey Neale, Peter Vogel & Hongbo Chi 
 
-__Nature__, __2019__
+Nature, 2019
 
 Abstract:
 
@@ -28,7 +28,7 @@ Abstract:
 
 Kai Yang, Daniel Bastardo Blanco, Xiang Chen, Pradyot Dash, Geoffrey Neale, Celeste Rosencrance, John Easton Wenan Chen, Changde Cheng, Yogesh Dhungana, Anil KC, Walid Awad, Xi-Zhi J. Guo, Paul G. Thomas, and Hongbo Chi
 
-__Science Immunology__, __2018__
+Science Immunology, 2018
 
 Abstract:
 
