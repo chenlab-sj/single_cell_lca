@@ -84,7 +84,14 @@ In **R**:
 
 Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. Nguyen, Beisi Xu, Yogesh Dhungana, Sherri Rankin, Wenan Chen, Celeste Rosencrance, Kai Yang, Yiping Fan, Yong Cheng, John Easton, Geoffrey Neale, Peter Vogel & Hongbo Chi 
 
-Nature, 2019
+__Nature__, __2019__
+
+>A defining feature of adaptive immunity is the development of long-lived memory T cells to 
+>curtail infection. Recent studies have identified a unique stem-like T-cell subset amongst 
+>exhausted CD8-positive T cells in chronic infection but it remains unclear whether 
+>CD4-positive T-cell subsets with similar features exist in chronic inflammatory conditions. 
+>Amongst helper T cells, TH 17 cells have prominent roles in autoimmunity and tissue 
+>inflammation and are characterized by inherent plasticity although how such …
 
 ## Corresponding author
 
