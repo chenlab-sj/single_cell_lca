@@ -137,17 +137,17 @@ In **R**:
 |`clust.max` |maximum number of clusters to be tested|10|
 >
 
-### LCA gallery
+## LCA gallery
 
-#### PBMC heterogeneity
+### PBMC heterogeneity
 >
 ![PBMC heterogeneity](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca1.png)
 >
-#### Melanoma cellular ecosystem
+### Melanoma cellular ecosystem
 >
 ![Melanoma cellular ecosystem](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca2.png)
 >
-#### CD44 characterizing the differentiation of Rh41 cells 
+### CD44 characterizing the differentiation of Rh41 cells 
 >
 ![Rh41](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca3.png)
 >
