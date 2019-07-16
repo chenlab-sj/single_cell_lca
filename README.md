@@ -7,7 +7,7 @@ Single-cell RNA sequencing (scRNA-seq) emerges as a powerful tool to characteriz
 
 ## Publications using LCA for single-cell RNAseq analysis
 
-### [Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity](https://www.nature.com/articles/s41586-018-0806-7)
+### Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity
 
 [![Chi2019Nature](https://bitbucket.org/scLCA/single_cell_lca/downloads/chi2019nature.png)](https://www.nature.com/articles/s41586-018-0806-7)
 
