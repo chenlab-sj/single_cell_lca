@@ -13,12 +13,13 @@ Peer W. F. Karmaus, Xiang Chen, Seon Ah Lim, Andrés A. Herrada, Thanh-Long M. N
 
 __Nature__, __2019__
 
->A defining feature of adaptive immunity is the development of long-lived memory T cells to 
->curtail infection. Recent studies have identified a unique stem-like T-cell subset amongst 
->exhausted CD8-positive T cells in chronic infection but it remains unclear whether 
->CD4-positive T-cell subsets with similar features exist in chronic inflammatory conditions. 
->Amongst helper T cells, TH 17 cells have prominent roles in autoimmunity and tissue 
->inflammation and are characterized by inherent plasticity although how such …
+>Abstract
+>>A defining feature of adaptive immunity is the development of long-lived memory T cells to 
+>>curtail infection. Recent studies have identified a unique stem-like T-cell subset amongst 
+>>exhausted CD8-positive T cells in chronic infection but it remains unclear whether 
+>>CD4-positive T-cell subsets with similar features exist in chronic inflammatory conditions. 
+>>Amongst helper T cells, TH 17 cells have prominent roles in autoimmunity and tissue 
+>>inflammation and are characterized by inherent plasticity although how such …
 
 ### [Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells](https://immunology.sciencemag.org/content/3/25/eaas9818.long)
 
@@ -26,13 +27,13 @@ Kai Yang, Daniel Bastardo Blanco, Xiang Chen, Pradyot Dash, Geoffrey Neale, Cele
 
 __Science Immunology__, __2018__
 
-
->The interaction between extrinsic factors and intrinsic signal strength governs thymocyte 
->development, but the mechanisms linking them remain elusive. We report that mechanistic 
->target of rapamycin complex 1 (mTORC1) couples microenvironmental cues with metabolic 
->programs to orchestrate the reciprocal development of two fundamentally distinct T cell 
->lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
->programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
+>Abstract
+>>The interaction between extrinsic factors and intrinsic signal strength governs thymocyte 
+>>development, but the mechanisms linking them remain elusive. We report that mechanistic 
+>>target of rapamycin complex 1 (mTORC1) couples microenvironmental cues with metabolic 
+>>programs to orchestrate the reciprocal development of two fundamentally distinct T cell 
+>>lineages, the αβ and γδ T cells. Developing thymocytes dynamically engage metabolic 
+>>programs including glycolysis and oxidative phosphorylation, as well as mTORC1 signaling …
 
 
 ## Getting Started
@@ -111,7 +112,7 @@ In **R**:
 
 ## Corresponding author
 
-[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
+>> ##[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
 
 
 
