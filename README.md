@@ -134,7 +134,7 @@ In **R**:
 
 
 |Argument	|Description	|Default|
-|-----------|:-------------:|------:|
+|:-----------|:-------------|------:|
 |`datmatrix`  |gene by cell matrix| provided by user|
 |`clust.max` |maximum number of clusters to be tested|`10`|
 |`trainingSetSize`|number of cells for training | `1000` |
