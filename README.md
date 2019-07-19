@@ -130,7 +130,7 @@ In **R**:
 
 ### Parameters
 
->
+
 |Argument	|Description	|Default|
 |-----------|:-------------:|------:|
 |`datmatrix`  |gene by cell matrix| provided by user|
@@ -141,31 +141,30 @@ In **R**:
 |`outlier.filter` | filter out outliers? | `False` |
 |`cor.thresh` | correlation threshold to remove redundant factors| `0.5`|
 
->
+
 
 ## LCA gallery
 
 ### PBMC heterogeneity
->
+
 ![PBMC heterogeneity](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca1.png)
->
+
 ### Melanoma cellular ecosystem
->
+
 ![Melanoma cellular ecosystem](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca2.png)
->
+
 ### CD44 characterizing the differentiation of Rh41 cells 
->
+
 ![Rh41](https://bitbucket.org/scLCA/single_cell_lca/downloads/lca3.png)
->
+
 
 
 ## Corresponding author
 
->
 [Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
->	
+	
 St. Jude Children's Research Hospital
->
+
 
 
 
