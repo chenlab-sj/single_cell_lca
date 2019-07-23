@@ -138,10 +138,10 @@ In **R**:
 |`datmatrix`  |gene by cell matrix| provided by user|
 |`clust.max` |maximum number of clusters to be tested|`10`|
 |`trainingSetSize`|number of cells for training | `1000` |
-|`topN` | number of top ranked results to be exported | `1` |
 |`datBatch` | a vector of batch labels | `NULL` |
 |`outlier.filter` | filter out outliers? | `False` |
 |`cor.thresh` | correlation threshold to remove redundant factors| `0.5`|
+|`zerocorrection`|correction for zeroes: log(counts+zerocorrection) |`0.25`|
 
 
 
