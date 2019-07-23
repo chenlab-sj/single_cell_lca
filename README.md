@@ -62,10 +62,10 @@ We need **R** and several **R** packages:
 
 ```
 	- R
-	- R: devtools
-	- R: igraph
-	- R: mclust
-	- R: RMTstat
+		- devtools
+		- cluster
+		- mclust
+		- RMTstat
 ```
 
 ### Installing
