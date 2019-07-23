@@ -161,7 +161,7 @@ In **R**:
 
 
 
-## Author to contact
+## Author
 
 [Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
 	
