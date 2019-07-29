@@ -96,6 +96,9 @@ In **R**:
 	data(myscExampleData)
 
 #It includes both the transcritp counts matrix and the true labels of the cells:
+#	Note: 	We can transform the datamatrix back by x=exp(y)-1
+# 			if the data matrix is log-transformed by y=log(1+x), 
+#			for example, where x is the transcript counts.
 
 	names(myscExampleData)
 #---output in R---
@@ -135,7 +138,7 @@ In **R**:
 
 |Argument	|Description	|Default|
 |:-----------|:-------------|------:|
-|`datmatrix`  |gene by cell matrix| provided by user|
+|`datmatrix`  |transcript counts matrix, gene by cell| provided by user|
 |`clust.max` |maximum number of clusters to be tested|`10`|
 |`trainingSetSize`|number of cells for training | `1000` |
 |`datBatch` | a vector of batch labels | `NULL` |
