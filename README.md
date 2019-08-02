@@ -67,6 +67,15 @@ We need **R** and several **R** packages:
 		- mclust
 		- RMTstat
 ```
+>
+About **R**:
+[The R Project for Statistical Computing](https://www.r-project.org/)
+>
+>
+How to install **R**, for example, this is a nice article by Mauricio Vargas:
+[How to install R on Windows, Mac OS X and Ubuntu](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu)
+>
+
 
 ### Installing
 
