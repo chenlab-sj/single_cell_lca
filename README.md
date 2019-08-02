@@ -74,7 +74,11 @@ We need **R** and several **R** packages:
 + How to install **R**, a nice article by Mauricio Vargas:
 	[How to install R on Windows, Mac OS X and Ubuntu](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu)
 
++ Install the packages we depend on:
 
+```R
+	install.packages(c("devtools","cluster","mclust","RMTstat"))
+```
 
 ### Installing
 
