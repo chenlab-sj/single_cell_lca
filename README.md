@@ -1,15 +1,14 @@
-- [Description](#Description)
-- [Publications using scLCA](#Publications-using-scLCA)
-- [Getting Started](#Getting%20Started)
-- [LCA gallery](#LCA%20gallery)
-- [Corresponding author](#Corresponding%20author)
-
 # Single cell LCA
 
 >
 A Robust and Scalable Algorithm to Reveal Subtle Diversity in Large-Scale Single-Cell RNA-Seq Data
 >
 
+- [Description](#Description)
+- [Publications using scLCA](#Publications-using-scLCA)
+- [Getting Started](#Getting-Started)
+- [LCA gallery](#LCA-gallery)
+- [Corresponding author](#Corresponding-author)
 <!-- toc -->
 
 ## Description
