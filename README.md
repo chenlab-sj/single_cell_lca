@@ -1,5 +1,5 @@
-- [Description](#heading)
-- [Publications using LCA for single-cell RNAseq analysis](#heading-1)
+- [Description](#Description)
+- [Publications using LCA for single-cell RNAseq analysis](#Publications%20using%20LCA%20for%20single-cell%20RNAseq%20analysis)
 - [Getting Started](#heading-2)
 - [LCA gallery](#heading-3)
 - [Corresponding author](#heading-4)
