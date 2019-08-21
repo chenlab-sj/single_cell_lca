@@ -4,7 +4,6 @@
 A Robust and Scalable Algorithm to Reveal Subtle Diversity in Large-Scale Single-Cell RNA-Seq Data
 >
 
-[TOC]
 
 ## Description
 
