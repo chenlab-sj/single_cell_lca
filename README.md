@@ -1,5 +1,5 @@
 - [Description](#Description)
-- [Publications using scLCA](#Publications%20using%20scLCA)
+- [Publications using scLCA](#Publications-using-scLCA)
 - [Getting Started](#Getting%20Started)
 - [LCA gallery](#LCA%20gallery)
 - [Corresponding author](#Corresponding%20author)
