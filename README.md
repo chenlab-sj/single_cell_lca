@@ -1,9 +1,18 @@
+- [Description](#heading)
+- [Publications using LCA for single-cell RNAseq analysis](#heading-1)
+- [Getting Started](#heading-2)
+- [LCA gallery](#heading-3)
+- [Corresponding author](#heading-4)
+
+
+
 # Single cell LCA
 
 >
 A Robust and Scalable Algorithm to Reveal Subtle Diversity in Large-Scale Single-Cell RNA-Seq Data
 >
 
+<!-- toc -->
 
 ## Description
 
