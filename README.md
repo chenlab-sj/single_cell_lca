@@ -1,8 +1,8 @@
 - [Description](#Description)
 - [Publications using scLCA](#Publications%20using%20scLCA)
-- [Getting Started](#heading-2)
-- [LCA gallery](#heading-3)
-- [Corresponding author](#heading-4)
+- [Getting Started](#Getting%20Started)
+- [LCA gallery](#LCA%20gallery)
+- [Corresponding author](#Corresponding%20author)
 
 # Single cell LCA
 
