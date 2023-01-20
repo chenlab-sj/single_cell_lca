@@ -20,8 +20,9 @@ resources including disease models suitable to identify and validate potential t
 >>
 
 
-## Corresponding author
+## Corresponding authors
 
-[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html)
+[Xiang Chen](https://www.stjude.org/directory/c/xiang-chen.html),
+[Jun Yang](https://www.stjude.org/research/labs/yang-jun-lab.html)
 	
 2023, St. Jude Children's Research Hospital
